@@ -1,0 +1,52 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+
+            <div class="card">
+                <div class="card-body">
+                    <form action="/links/edit/{{producto.id}}" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre" value="{{producto.nombre}}" class="form-control" placeholder="nombre producto"
+                                autofocus>
+                        </div>
+                        <P></P>
+                        <div class="form-group">
+                            <input type="number" name="id" value="{{producto.id}}" class="form-control" placeholder="id">
+                        </div>
+                        <P></P>
+                        <div class="form-group">
+                            <textarea name="descripcion" rows="2" class="form-control"
+                                placeholder="descripcion">{{producto.descripcion}}</textarea>
+                        </div>
+                        <P></P>
+                        <div class="form-group">
+                            <input type="number" name="precio" value="{{producto.precio}}" class="form-control" placeholder="precio">
+                        </div>
+                        <P></P>
+                        <div class="form-group">
+                            <input type="number" name="unidades"  value="{{producto.unidades}}" class="form-control" placeholder="unidades">
+                        </div>
+                        
+                        <P></P>
+                        <div class="form-group">
+                            <label for="inputState"> </label>
+                            <select name="drogueria_id" value="{{producto.drogueria_id}}"class="form-control" placeholder="elige">
+
+                                <option value="1">Sanar LaLibertad</option>
+                                <option value="2">Sanar sanMateo</option>
+
+                            </select>
+                        </div>
+                        <P></P>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block">
+                                Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>  

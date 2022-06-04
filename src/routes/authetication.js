@@ -19,7 +19,8 @@ const passport =  require('passport');
 
 //sign in
    router.get('/signin',(req,res)=>{
-      res.render('auth/signin');
+      let pathSignin = path +'/signin.hbs';
+      res.render(pathSignin);  
    });   
 
    router.post('/signin', (req, res,next )=>{

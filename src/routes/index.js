@@ -1,8 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('helo neas');
-});
+//Raiz
+router.get("/index", async (req, res) => {
+    res.render("links/index");
+  });
 
 module.exports = router;
+
+//Agregar 
+router.get('/add',(req, res)=>{
+  res.render('links/add'); 
+})
+
+

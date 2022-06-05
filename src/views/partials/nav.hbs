@@ -1,31 +1,37 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   
-  <div class="container">
-    <a class="navbar-brand" href="#">SANAR</a>
+  <div class="container ">
+
+    <div>
+      <a class="navbar-brand" href="/index">
+      <img src="/img/logo.svg" class="width-logo" alt="Sanar">Drogueria Sanar</a>
+    </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+      <ul class="navbar-nav d-flex">
+        
+        {{#if user}}
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/add">Añadir producto</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+        <li class="nav-item mx-2">
+          <a class="nav-link" href="/list">Lista</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
+        <li class="nav-item mx-2 ms-auto">
+          <a class="nav-link btn btn-success text-white" href="/logout">Cerrar sesion</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+
+        {{else}}
+        <li class="nav-item mx-2 ms-auto">
+          <a class="nav-link" href="/signup">Registro</a>
         </li>
+        <li class="nav-item mx-2 ms-auto">
+          <a class="nav-link" href="/signin">Iniciar sesion</a>
+        </li>
+        {{/if}}
       </ul>
     </div>
   </div>

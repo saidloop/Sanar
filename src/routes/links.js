@@ -1,18 +1,19 @@
 const express = require('express');
 const router = express.Router();
-
+const passport = require("passport");
 const pool = require('../database');
 
-router.get('/add',(req, res)=>{
-    res.render('links/add'); 
-})
+
+router.get('/mostrar' , async (req, res) => {
+    const productos = await pool.query('SELECT * FROM producto');
+    res.render('links/index',{productos});
+});
 
 // listar productos en pagina link (cambiar)
 router.post('/add', async (req, res)=>{
-    const { nombre, id, descripcion, precio, unidades, drogueria_id} = req.body;
+    const { nombre, descripcion, precio, unidades, drogueria_id} = req.body;
     const new_producto = {
         nombre,
-        id,
         descripcion,
         precio,
         unidades,
@@ -20,12 +21,7 @@ router.post('/add', async (req, res)=>{
     };
     await pool.query('INSERT INTO producto set ?', [new_producto]);   
     req.flash('success', 'PRODUCTO GUARDAO MI PEZ');  
-    res.redirect('/links');
-});
-
-router.get('/' , async (req, res) => {
-    const productos = await pool.query('SELECT * FROM producto');
-    res.render('links/list',{productos});
+    res.redirect('/links/index');
 });
 
 //eliminar productos

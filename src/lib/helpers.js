@@ -1,18 +1,19 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 const helpers = {};
-
+//Encrypta la contrasena
 helpers.encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
-  const hash = await bcrypt.hash(password, salt);
-  return hash;
+  const passCrypt = await bcrypt.hash(password, salt);
+  return passCrypt;
 };
 
-helpers.matchPassword = async (password, savedPassword) => {
+//Compara una contrasena encryptada con una de la base de datos.
+helpers.matchPassword = async (password, savedPass) => {
   try {
-    return await bcrypt.compare(password, savedPassword);
-  } catch (e) {
-    console.log(e)
+    return await bcrypt.compareSync(password, savedPass);
+  } catch (error) {
+    console.log(error);
   }
 };
 

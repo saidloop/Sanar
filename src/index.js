@@ -1,6 +1,6 @@
 const express = require('express');
-const morgan = require('morgan');
 const { engine } = require('express-handlebars');
+const morgan = require('morgan');
 const path = require('path');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -11,7 +11,7 @@ const {database} = require('./keys');
 
 //inicializacion 
 const app = express();
-require('./lib/passport')
+require('./lib/passport');
 
 //settings
 app.set('port', process.env.PORT || 3000);
@@ -24,6 +24,7 @@ app.engine('.hbs', engine({
     helpers: require('./lib/handlebars')
 }));
 app.set('view engine','.hbs');
+
 
 //middlewars
 app.use(session({
@@ -43,12 +44,14 @@ app.use(passport.session());
 app.use((req, res, next) => {
     app.locals.success = req.flash('success');
     app.locals.message = req.flash('message');
+    app.locals.user = req.user;
     next();
 });
 
 //routes
-app.use(require('./routes/'));
-app.use(require('./routes/authetication'));
+app.use(require('./routes'));
+app.use(require('./routes/authentication'));
+app.use('/links', require('./routes/index'));
 app.use('/links', require('./routes/links'));
 
 
@@ -58,5 +61,5 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 //start server
 app.listen(app.get('port'), () => {
-    console.log('Arrancamos mijooo', app.get('port'));
+    console.log('http://localhost:3000/links/index', app.get('port'));
 });

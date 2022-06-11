@@ -9,8 +9,12 @@ router.get('/mostrar' , async (req, res) => {
     res.render('links/index',{productos});
 });
 
-// listar productos en pagina link (cambiar)
-router.post('/add', async (req, res)=>{
+router.get('/mostrar_drogueria' , async (req, res) => {
+    const drogueria = await pool.query('SELECT * FROM drogueria');
+    res.render('links/index',{drogueria});
+});
+
+router.post('/links/add', async (req, res)=>{
     const { nombre, descripcion, precio, unidades, drogueria_id} = req.body;
     const new_producto = {
         nombre,

@@ -13,9 +13,5 @@ router.get('/add',(req, res)=>{
   res.render('links/add'); 
 })
 
-//Mostrar Productos
-router.get('/productos',(req, res)=>{
-  res.render('links/productos'); 
-})
 
 

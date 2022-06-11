@@ -9,10 +9,6 @@ const { isLoggedIn, isNotLoggedIn } = require("../lib/auth");
     res.render('links/auth/signup')
  });
 
- router.get('/list',(req, res) => {
-    res.send('<a class="navbar-brand" href="/index">Drogueria Sanar</a>')
- });
-
  router.post('/signup', passport.authenticate('local.signup', {
       successRedirect: '/index',
       failureRedirect: '/signin',

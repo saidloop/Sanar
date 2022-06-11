@@ -1,0 +1,33 @@
+<h1>Productos</h1>
+
+
+<div class="boxesContainer">
+  <div class="cardBox">
+
+    {{#each productos}}
+
+    <div class="card">
+      <div class="front">
+        <h3>{{nombre}}</h3>
+        <p>{{descripcion}}</p>
+        <strong>&#x21bb;</strong>
+      </div>
+      <div class="back">
+        <h3>Back Side One</h3>
+        <p>Content in card one</p>
+        <a href="#">Button 1</a>
+      </div>
+    </div>
+  </div>
+
+  {{else}}
+
+  <div class="col-md-4 mx-auto">
+    <div class="card card-body text-center">
+      <p>no hay productos aun</p>
+    </div>
+
+    {{/each}}
+
+  </div>
+</div>

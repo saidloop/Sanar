@@ -55,8 +55,9 @@ app.use('/links', require('./routes/index'));
 app.use('/links', require('./routes/links'));
 
 
+
 //public
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname ,'/public')))
 
 
 //start server

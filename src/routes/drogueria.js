@@ -3,10 +3,10 @@ const router = express.Router();
 const pool = require('../database')
 
 
-router.get('/producto' , async (req, res) => {
+router.get('/productos' , async (req, res) => {
     const productos = await pool.query('SELECT * FROM producto');
     console.log("Los productos: "+ productos)
-    res.render('links/list',{productos});
+    res.render('links/productos',{productos});
 });
 
 router.get('/droguerias' , async (req, res) => {

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //Raiz
-router.get("/index", async (req, res) => {
+router.get("/", async (req, res) => {
     res.render("links/index");
   });
 

@@ -1,5 +1,15 @@
 ul.navbar-nav  {
-    position: absolute;
-    left: 50%;
+    position: relative;
+    left: 75%;
     transform: translatex(-50%);
+}
+.navbar-brand{
+    font-family: DM Sans', sans-serif;
+}
+img.logotipohr{ 
+    width: 100%; height: auto; 
+}
+a.nav-link.btn.btn-success.text-white{
+
+    align-items: right;
 }

@@ -1,33 +1,23 @@
 <h1>Productos</h1>
 
-
-<div class="boxesContainer">
-  <div class="cardBox">
-
-    {{#each productos}}
-
-    <div class="card">
-      <div class="front">
-        <h3>{{nombre}}</h3>
-        <p>{{descripcion}}</p>
-        <strong>&#x21bb;</strong>
-      </div>
-      <div class="back">
-        <h3>Back Side One</h3>
-        <p>Content in card one</p>
-        <a href="#">Button 1</a>
-      </div>
+<<!-- Nav -->
+<nav class="navbar navbar-inverse bg-inverse fixed-top bg-faded">
+    <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cart">Cart (<span class="total-count"></span>)</button><button class="clear-cart btn btn-danger">Clear Cart</button></div>
     </div>
-  </div>
+</nav>
 
-  {{else}}
-
-  <div class="col-md-4 mx-auto">
-    <div class="card card-body text-center">
-      <p>no hay productos aun</p>
-    </div>
-
-    {{/each}}
-
+<!-- Main -->
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="width: 20rem;">
+  <img class="card-img-top" src="http://www.azspagirls.com/files/2010/09/orange.jpg" alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title">Orange</h4>
+    <p class="card-text">Price: $0.5</p>
+    <a href="#" data-name="Orange" data-price="0.5" class="add-to-cart btn btn-primary">Add to cart</a>
   </div>
 </div>
+      </div>

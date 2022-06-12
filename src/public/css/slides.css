@@ -1,0 +1,41 @@
+.img_spa_1{
+    width: 100%;
+    height: 600px;
+    border-radius: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    
+    }
+    .img_spa_2{
+        width: 100%;
+        height: 600px;
+        border-radius: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        
+     }
+     .img_spa_3{
+            width: 100%;
+            height: 600px; 
+            border-radius: 20px;
+            background-size: contain;
+            background-repeat: no-repeat;
+           
+            
+     }
+    
+     .dark-bg {
+        background-image: linear-gradient(rgba(0,0,0, .9), rgba(0,0,0, .9)), url('/img/image1.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+    }
+    
+    #hero .container {
+        height: 50vh;
+    }
+    
+    .generic {
+        padding: 100px 0;
+    }

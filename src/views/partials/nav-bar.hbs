@@ -1,23 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
 
+
     <div>
       <a class="navbar-brand" href="/index">
-        <img src="/img/logo.svg" class="width-logo" alt="Sanar">Drogueria Sanar</a>
+        <img src="/img/logos.svg" class="width-logo" alt="Sanar"><b>Droguerias Sanar</b></a> </a>
     </div>
 
-    {{#if user}}
-    <li class="nav-item mx-2">
-      <a class="nav-link" href="/list">Inventario</a>
-    </li>
-    <li class="nav-item mx-2">
-      <a class="nav-link" href="/add">Añadir Producto</a>
-    </li>
-    <li class="nav-item mx-2 ms-auto">
-      <a class="nav-link btn btn-success text-white" href="/logout">Cerrar sesion</a>
-    </li>
-
-    {{else}}
+   
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -29,33 +19,47 @@
         </li>
 
         <li class="nav-item mx-2 ms-auto">
-          <a class="nav-link" href="/producto" align="center">Productos</a>
+          <a class="nav-link" href="/productos" align="center">Productos</a>
         </li>
+         {{#if user}}
+    <li class="nav-item mx-2 ms-auto">
+      <a class="nav-link" href="/list" align="center">Inventario</a>
+    </li>
+    <li class="nav-item mx-2 ms-auto">
+      <a class="nav-link" href="/add" align="center">Aniadir</a>
+    </li>
+    <li class="nav-item mx-2 ms-auto">
+      <a class="nav-link btn btn-success text-white" href="/logout">Cerrar sesion</a>
+    </li>
+
+    {{else}}
 
 
-        <li class="nav-item mx-2 ms-auto">
+      
+
+
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/droguerias" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Sucursales
+          </a>
+
+
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li>{{#each drogueria}}<a class="dropdown-item" href="#">{{nombre}}</a>{{/each}}</li>
+          </ul>
+            <li class="nav-item mx-2 ms-auto">
           <a class="nav-link" href="/signup">Registro</a>
         </li>
 
         <li class="nav-item mx-2 ms-auto">
           <a class="nav-link" href="/signin" align="center">Iniciar sesion</a>
         </li>
-
-        {{/if}}
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
-          </a>
-          {{#each drogueria}}
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="/droguerias">{{nombre}}</a></li>
-          </ul>
-          {{/each}}
         </li>
       </ul>
     </div>
-
+    {{/if}}
   </div>
 </nav>

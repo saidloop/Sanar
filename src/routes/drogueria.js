@@ -10,10 +10,12 @@ router.get('/producto' , async (req, res) => {
 });
 
 router.get('/droguerias' , async (req, res) => {
-    const drogueria = await pool.query('SELECT * FROM drogueria');
-    console.log(drogueria);
+    const productos = await pool.query('SELECT * FROM producto');
+    console.log(drogueria)
     res.render('links/index',{drogueria});
 });
+
+
 
 router.post('/addProduct', async (req, res)=>{
     const { nombre, descripcion, precio, unidades, drogueria_id} = req.body;

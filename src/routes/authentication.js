@@ -22,7 +22,7 @@ const { isLoggedIn, isNotLoggedIn } = require("../lib/auth");
 
    router.post('/signin', (req, res,next )=>{
       passport.authenticate('local.signin', {
-      successRedirect: '/index',
+      successRedirect: '/',
       failureRedirect: '/signup',
       failureFlash: true
       })(req,res,next)

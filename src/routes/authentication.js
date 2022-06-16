@@ -13,7 +13,7 @@ const { isLoggedIn, isNotLoggedIn } = require("../lib/auth");
 });
 
  router.post('/signup', passport.authenticate('local.signup', {
-      successRedirect: '/index',
+      successRedirect: '/',
       failureRedirect: '/signin',
       failureFlash: true
    }));
@@ -25,7 +25,7 @@ const { isLoggedIn, isNotLoggedIn } = require("../lib/auth");
 
    router.post('/signin', (req, res,next )=>{
       passport.authenticate('local.signin', {
-      successRedirect: '/index',
+      successRedirect: '/',
       failureRedirect: '/signup',
       failureFlash: true
       })(req,res,next)
@@ -53,7 +53,7 @@ router.get('/logout',(req,res)=>{
 
 //Profile
    router.get('/profile',(req,res)=>{
-    res.send('<a class="navbar-brand" href="/index"> Drogueria Sanar </a>')
+    res.send('<a class="navbar-brand" href="/"> Drogueria Sanar </a>')
    });
  
 module.exports = router; 

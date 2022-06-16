@@ -41,7 +41,7 @@ router.post('/addProduct', upload.single("imagen"),async (req, res)=>{
     console.log(new_producto)
     await pool.query('INSERT INTO producto set ?', [new_producto]);   
     req.flash('success', 'PRODUCTO GUARDAO MI PEZ');  
-    res.redirect('/links/index');
+    res.redirect('/links/');
 });
 
 //eliminar productos

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const pool = require('../database')
 
 //Raiz
 router.get("/index", async (req, res) => {
@@ -10,12 +11,14 @@ module.exports = router;
 
 //Agregar 
 router.get('/add',(req, res)=>{
-  res.render('/links/add'); 
+  res.render('links/add');
+
 })
 
-router.get('/si',(req, res)=>{
-  res.render('/links/si'); 
+router.get('/ubicacion',(req, res)=>{
+  res.render('links/ubicacion'); 
 })
+
 
 
 

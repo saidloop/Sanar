@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const mySQLstore = require('express-mysql-session');
 const passport = require('passport');
+const pool = require('./database');
 
 const {database} = require('./keys');
 
@@ -41,11 +42,13 @@ app.use(passport.initialize());
 app.use(passport.session()); 
 
 //global variables 
-app.use((req, res, next) => {
+app.use( async(req, res, next) => {
     app.locals.success = req.flash('success');
     app.locals.message = req.flash('message');
     app.locals.user = req.user;
-    app.locals.drogueria= req.drogueria;
+    const droguerias = await pool.query('SELECT * FROM drogueria');   
+    app.locals.drogueria= droguerias;
+    app.locals.cart = req.cart;
     next();
 });
 
@@ -53,7 +56,8 @@ app.use((req, res, next) => {
 app.use(require('./routes'));
 app.use(require('./routes/authentication'));
 app.use('/links', require('./routes/index'));
-app.use('/',require('./routes/drogueria'))
+app.use('/',require('./routes/drogueria'));
+app.use('/',require('./routes/cart'));
 
 
 

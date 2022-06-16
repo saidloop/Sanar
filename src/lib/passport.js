@@ -26,6 +26,35 @@ passport.use('local.signin', new LocalStrategy({
     }
 }));
 
+//SING IN_ADMIN
+passport.use('local.admin', new LocalStrategy({
+    usernameField: 'codigo_admin',
+    passwordField: 'password',
+    passReqToCallback: true
+    
+}, async (req, email, password, done) => {
+ 
+    const {codigo_admin} = req.body;
+    console.log("Admin"+ codigo_admin);
+
+    const rows = await pool.query('SELECT * FROM admin WHERE codigo_admin = ?',[codigo_admin]);
+    if (rows.length > 0) {
+        const admin = rows[0];
+        const validPassword = (password === admin.password);
+
+        console.log(validPassword)
+        if (validPassword) {
+            done(null, admin, req.flash('success', 'Bienvenido'));
+        } else {
+            done(null, false, req.flash('message', 'Correo o contrasena incorrectas'));
+        }
+
+    } else {
+        return done(null, false, req.flash('message', 'No existe'));
+    }
+}));
+
+
 //SIGNUP 
 passport.use('local.signup', new LocalStrategy({
     usernameField: 'email',
@@ -48,8 +77,17 @@ passport.use('local.signup', new LocalStrategy({
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
-
 passport.deserializeUser(async (id, done) => {
     const rows = await pool.query("SELECT * FROM usuarios where id = ?", [id]);
+    done(null, rows[0]);
+});
+
+/*Admin*/
+
+passport.serializeUser((admin, done) => {
+    done(null, admin.id);
+});
+passport.deserializeUser(async (id, done) => {
+    const rows = await pool.query("SELECT * FROM admin where id = ?", [id]);
     done(null, rows[0]);
 });

@@ -8,10 +8,16 @@
       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
+        <li class="nav-item d-flex align-middle me-3">
+          <a href="/cart" class="m-auto d-flex">
+            <img src="/img/cart.svg" class=" img-fluid align-middle img-thumbnail" width="35px" alt="bag">
+          </a>
+        </li>
         <li class="nav-item mx-2 ms-auto">
-          <a class="nav-link" href="/si" align="center">Servicios</a>
+          <a class="nav-link" href="/ubicacion" align="center">Ubicacion</a>
         </li>
 
         <li class="nav-item mx-2 ms-auto">
@@ -22,37 +28,32 @@
       <a class="nav-link" href="/list" align="center">Inventario</a>
     </li>
     <li class="nav-item mx-2 ms-auto">
-      <a class="nav-link" href="/add" align="center">Aniadir</a>
+      <a class="nav-link" href="/add" align="center">Añadir</a>
     </li>
     <li class="nav-item mx-2 ms-auto">
-      <a class="nav-link btn btn-success text-white" href="/logout">Cerrar sesion</a>
+      <a class="nav-link btn btn-success text-white" href="/logout">Cerrar sesión</a>
     </li>
 
     {{else}}
-
-
-      
-
-
-
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/droguerias" id="navbarDropdownMenuLink" role="button"
             data-bs-toggle="dropdown" aria-expanded="false">
             Sucursales
           </a>
+          
+          <ul class="dropdown-menu " style="z-index: auto;" aria-labelledby="navbarDropdownMenuLink">
+            {{#each drogueria}}
 
-
-
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li>{{#each drogueria}}<a class="dropdown-item" href="#">{{nombre}}</a>{{/each}}</li>
-          </ul>
-            <li class="nav-item mx-2 ms-auto">
-          <a class="nav-link" href="/signup">Registro</a>
-        </li>
-
+            <li><a class="dropdown-item "  href="/productos/{{id}}"> {{nombre}} </a></li>
+             {{/each}} 
+        </ul>
+        
         <li class="nav-item mx-2 ms-auto">
           <a class="nav-link" href="/signin" align="center">Iniciar sesion</a>
         </li>
+        
+        <li class="nav-item mx-2 ms-auto">
+            <a class="nav-link" href="/signup">Registro</a>
         </li>
       </ul>
     </div>

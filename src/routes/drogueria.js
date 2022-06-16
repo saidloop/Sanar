@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../database')
-
+const multer = require("multer");
+const upload = multer({ dest: "./src/public/imgProductos" });
+const path = require("path");
+const fs = require("fs");
 
 router.get('/productos' , async (req, res) => {
     const productos = await pool.query('SELECT * FROM producto');
@@ -9,23 +12,31 @@ router.get('/productos' , async (req, res) => {
     res.render('links/productos',{productos});
 });
 
-router.get('/droguerias' , async (req, res) => {
-    const productos = await pool.query('SELECT * FROM producto');
-    console.log(drogueria)
-    res.render('links/index',{drogueria});
+
+router.get('/productos/:id', async (req, res)=>{
+    const {id} = req.params;
+    const productos = await pool.query('SELECT * FROM producto WHERE id IN (SELECT producto_id FROM adquier WHERE drogueria_id = ?)', [id]);
+    console.log(productos);
+    res.render('links/productos',{productos});
 });
 
+router.post('/subir/:id', upload.single('imagen'), async (req,res)=>{
+    res.redirect("/perfil");
+  })
 
-
-router.post('/addProduct', async (req, res)=>{
-    const { nombre, descripcion, precio, unidades, drogueria_id} = req.body;
-    
+router.post('/addProduct', upload.single("imagen"),async (req, res)=>{
+    const { nombre, descripcion, precio, unidades, drogueria_id, imagen} = req.body;
+    const nose = fs.renameSync(req.file.path, req.file.path + '.' + req.file.mimetype.split('/')[1]);
+    const ola = "." + req.file.mimetype.split('/')[1];
+    const source = req.file.filename + ola
+    console.log(source);
     const new_producto = {
         nombre,
         descripcion,
         precio,
         unidades,
-        drogueria_id
+        drogueria_id,
+        source
     };
     console.log(new_producto)
     await pool.query('INSERT INTO producto set ?', [new_producto]);   

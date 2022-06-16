@@ -4,7 +4,7 @@
 
             <div class="card">
                 <div class="card-body">
-                    <form action="/addProduct" method="POST">
+                    <form action="/addProduct" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="text" name="nombre" class="form-control" placeholder="nombre producto"
                                 autofocus>
@@ -32,6 +32,12 @@
                                 <option value="2">Sanar San Mateo</option>
 
                             </select>
+                        </div>
+                        <div class="form-outline mb-2">
+                        <br>
+                        <label for="formFile" class="form-label fw-bold">Imagen del producto </label>
+                        <br />
+                        <input type="file" name="imagen">
                         </div>
                         <P></P>
                         <div class="form-group">

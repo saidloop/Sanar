@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../database')
 
 //Raiz
-router.get("/", async (req, res) => {
+router.get("/links/index", async (req, res) => {
     res.render("links/index");
   });
 

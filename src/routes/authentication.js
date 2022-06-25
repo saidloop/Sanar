@@ -13,7 +13,7 @@ const { isLoggedIn, isNotLoggedIn } = require("../lib/auth");
 });
 
  router.post('/signup', passport.authenticate('local.signup', {
-      successRedirect: '/',
+      successRedirect: '/links/index',
       failureRedirect: '/signin',
       failureFlash: true
    }));
@@ -25,7 +25,7 @@ const { isLoggedIn, isNotLoggedIn } = require("../lib/auth");
 
    router.post('/signin', (req, res,next )=>{
       passport.authenticate('local.signin', {
-      successRedirect: '/',
+      successRedirect: '/links/index',
       failureRedirect: '/signup',
       failureFlash: true
       })(req,res,next)

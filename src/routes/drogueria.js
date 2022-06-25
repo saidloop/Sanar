@@ -12,6 +12,11 @@ router.get('/productos' , async (req, res) => {
     res.render('links/productos',{productos});
 });
 
+router.get('/list' , async (req, res) => {
+    const productos = await pool.query('SELECT * FROM producto');
+    console.log("Los productos: "+ productos)
+    res.render('links/list',{productos});
+});
 
 router.get('/productos/:id', async (req, res)=>{
     const {id} = req.params;
@@ -41,7 +46,7 @@ router.post('/addProduct', upload.single("imagen"),async (req, res)=>{
     console.log(new_producto)
     await pool.query('INSERT INTO producto set ?', [new_producto]);   
     req.flash('success', 'PRODUCTO GUARDAO MI PEZ');  
-    res.redirect('/links/');
+    res.redirect('/links');
 });
 
 //eliminar productos

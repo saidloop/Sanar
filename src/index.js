@@ -62,7 +62,7 @@ app.use('/',require('./routes/cart'));
 
 
 //public
-app.use(express.static(path.join(__dirname ,'public')))
+app.use(express.static(path.join(__dirname ,'/public')))
 
 
 //start server

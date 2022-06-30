@@ -53,7 +53,7 @@ app.use( async(req, res, next) => {
 });
 
 //routes
-app.use(require('./routes/index'));
+app.use(require('./routes'));
 app.use(require('./routes/authentication'));
 app.use('/links', require('./routes/index'));
 app.use('/',require('./routes/drogueria'));

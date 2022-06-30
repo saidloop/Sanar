@@ -54,7 +54,7 @@ router.get('/delete/:id' , async (req, res) => {
     const {id} = req.params;
     await pool.query('DELETE FROM producto WHERE id = ?', [id]);
     req.flash('success', 'PRODUCTO eliminao MI PEZ');
-    res.redirect('/productos');
+    res.redirect('/list');
  });
  
  //editar productos

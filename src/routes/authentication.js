@@ -8,9 +8,7 @@ const { isLoggedIn, isNotLoggedIn } = require("../lib/auth");
  router.get('/signup',(req, res) => {
     res.render('links/auth/signup')
  });
- router.get('/list',(req, res) => {
-   res.render('links/list')
-});
+
 
  router.post('/signup', passport.authenticate('local.signup', {
       successRedirect: '/links/index',

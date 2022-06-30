@@ -45,8 +45,8 @@ router.post('/addProduct', upload.single("imagen"),async (req, res)=>{
     };
     console.log(new_producto)
     await pool.query('INSERT INTO producto set ?', [new_producto]);   
-    req.flash('success', 'PRODUCTO GUARDAO MI PEZ');  
-    res.redirect('/links');
+    req.flash('message', 'PRODUCTO GUARDAO MI PEZ');  
+    res.redirect('/productos');
 });
 
 //eliminar productos
@@ -54,7 +54,7 @@ router.get('/delete/:id' , async (req, res) => {
     const {id} = req.params;
     await pool.query('DELETE FROM producto WHERE id = ?', [id]);
     req.flash('success', 'PRODUCTO eliminao MI PEZ');
-    res.redirect('/producto');
+    res.redirect('/productos');
  });
  
  //editar productos
@@ -67,17 +67,20 @@ router.get('/delete/:id' , async (req, res) => {
  
   router.post('/edit/:id', async (req, res) => {
       const {id} = req.params;
-      const { nombre, descripcion, precio, drogueria_id, unidades } = req.body;
+      const { nombre, descripcion, precio, drogueria_id, unidades, laboratorio, tamanio, presentacion } = req.body;
       const new_producto = {
          nombre, 
          descripcion, 
          precio, 
          drogueria_id, 
-         unidades
+         unidades,
+         laboratorio,
+         tamanio,
+        presentacion
       };
       await pool.query('UPDATE producto SET ? WHERE id = ?', [new_producto, id]);
       req.flash('success', 'PRODUCTO editAO MI PEZ');
-      res.redirect('/producto')
+      res.redirect('/productos')
  });
 
  module.exports = router;
